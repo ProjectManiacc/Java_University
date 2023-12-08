@@ -1,5 +1,9 @@
 controller\InvalidCharacterException.class
+model\package-info.class
 view\CipherView.class
+pl\polsl\cipher\package-info.class
 pl\polsl\cipher\Cipher.class
+view\package-info.class
 controller\CipherController.class
+controller\package-info.class
 model\CipherModel.class
