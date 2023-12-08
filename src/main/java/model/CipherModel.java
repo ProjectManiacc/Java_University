@@ -1,26 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
+ * The model class representing the original sentence to be encrypted.
  *
- * @author SuperStudent-PL
+ * @author Piotr Kluziok
  */
 public class CipherModel {
-    
-    private String alphabet = "abcde";
-    private String cipher;
-    
-    public String getCipher(){
-        return this.cipher;
+
+    private final String originalSentence;
+
+    /**
+     * Constructs a CipherModel with the original sentence.
+     *
+     * @param originalSentence The original sentence to be encrypted.
+     */
+    public CipherModel(String originalSentence) {
+        this.originalSentence = originalSentence;
     }
-    
-    
-//    public void createCipher(){
-//        
-//    }
-    
-    
+
+    /**
+     * Gets the original sentence.
+     *
+     * @return The original sentence.
+     */
+    public String getOriginalSentence() {
+        return originalSentence;
+    }
 }

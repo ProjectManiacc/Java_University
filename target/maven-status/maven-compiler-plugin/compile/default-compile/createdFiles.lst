@@ -1,3 +1,4 @@
+controller\InvalidCharacterException.class
 view\CipherView.class
 pl\polsl\cipher\Cipher.class
 controller\CipherController.class

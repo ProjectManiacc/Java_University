@@ -1,20 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package view;
 
 /**
+ * The view class responsible for displaying information to the user.
  *
- * @author SuperStudent-PL
+ * @author Piotr Kluziok
  */
 public class CipherView {
-    
-    public void showUserSentense(String sentense){
-        System.out.println("User sentense: " + sentense);
+
+    /**
+     * Displays the user's input sentence.
+     *
+     * @param sentence The user's input sentence to be displayed.
+     */
+    public void showUserSentence(String sentence) {
+        System.out.println("User sentence: " + sentence);
     }
-    
-    public void showEncryptedSentense(String sentense){
-        System.out.println("Encrypted sentense: " + sentense);
+
+    /**
+     * Displays the encrypted sentence.
+     *
+     * @param sentence The encrypted sentence to be displayed.
+     */
+    public void showEncryptedSentence(String sentence) {
+        System.out.println("Encrypted sentence: " + sentence);
     }
+
+    /**
+     * Displays an error message related to invalid characters during
+     * encryption.
+     *
+     * @param message The error message to be displayed.
+     */
+    public void showError(String message) {
+        System.out.println("Error: " + message);
+        System.out.println("Application accepts only letters for encryption.");
+    }
+
 }
