@@ -4,6 +4,9 @@ package pl.polsl.cipher;
 
 import controller.CipherController;
 import controller.InvalidCharacterException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import model.CipherModel;
 import view.CipherView;
 
@@ -18,6 +21,8 @@ public class Cipher {
 
     private static String sentence;
     private static String encryptedSentence;
+    private static List<String> listSentences;
+    private static List<String> encryptedListSentences;
 
     /**
      * The main method for the Cipher application.
@@ -48,11 +53,21 @@ public class Cipher {
 
         CipherModel cipherModel = new CipherModel(sentence);
         try {
-            encryptedSentence = CipherController.encrypt(cipherModel.getOriginalSentence());
+            encryptedSentence = cipherModel.encrypt(sentence);
         } catch (InvalidCharacterException e) {
             cipherView.showError(e.getMessage());
         }
         cipherView.showEncryptedSentence(encryptedSentence);
-
+        
+        List<String> listSentences = new ArrayList<String>(Arrays.asList("Alamakota", "qwerty", "nic"));
+        cipherView.showUserListSentences(listSentences);
+        CipherModel cipherModelSentences = new CipherModel(listSentences);
+        
+        try {
+        encryptedListSentences = cipherModel.encryptSentences(listSentences);
+        } catch (InvalidCharacterException e) {
+            cipherView.showError(e.getMessage());
+        }
+        cipherView.showEncryptedListSentence(encryptedListSentences);
     }
 }

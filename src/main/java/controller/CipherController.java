@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,41 +24,5 @@ public class CipherController {
         return sentence;
     }
 
-    /**
-     * Encrypts the given sentence.
-     *
-     * @param sentence The sentence to encrypt.
-     * @return The encrypted sentence.
-     * @throws InvalidCharacterException If an invalid character is encountered
-     * during encryption.
-     */
-    public static String encrypt(String sentence) throws InvalidCharacterException {
-        StringBuilder encrypted = new StringBuilder();
-        for (int i = 0; i < sentence.length(); i++) {
-            char currentChar = sentence.charAt(i);
-            if (Character.isLetter(currentChar)) {
-                char encryptedChar = encryptChar(currentChar);
-                encrypted.append(encryptedChar);
-            } else {
-                throw new InvalidCharacterException("Invalid Character: " + currentChar);
-            }
-        }
-        return encrypted.toString();
-    }
 
-    /**
-     * Encrypts a single character.
-     *
-     * @param letter The character to encrypt.
-     * @return The encrypted character.
-     */
-    public static char encryptChar(char letter) {
-        if (Character.isLowerCase(letter)) {
-            return (char) ('z' - (letter - 'a'));
-        } else if (Character.isUpperCase(letter)) {
-            return (char) ('Z' - (letter - 'A'));
-        } else {
-            return letter;
-        }
-    }
 }

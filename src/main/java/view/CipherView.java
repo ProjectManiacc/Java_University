@@ -1,5 +1,7 @@
 package view;
 
+import java.util.List;
+
 /**
  * The view class responsible for displaying information to the user.
  *
@@ -15,6 +17,10 @@ public class CipherView {
     public void showUserSentence(String sentence) {
         System.out.println("User sentence: " + sentence);
     }
+    
+    public void showUserListSentences(List<String> listSentences){
+        System.out.println("User sentences: " + listSentences);
+    }
 
     /**
      * Displays the encrypted sentence.
@@ -23,6 +29,10 @@ public class CipherView {
      */
     public void showEncryptedSentence(String sentence) {
         System.out.println("Encrypted sentence: " + sentence);
+    }
+    
+    public void showEncryptedListSentence(List<String> sentence) {
+        System.out.println("Encrypted sentences: " + sentence);
     }
 
     /**
