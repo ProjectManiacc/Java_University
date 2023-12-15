@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import controller.InvalidCharacterException;
+import model.InvalidCharacterException;
 import java.util.List;
 import model.CipherModel;
 import org.junit.jupiter.api.AfterEach;
@@ -17,34 +17,41 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
- *
+ * JUnit 5 test class for the CipherModel class.
+ * 
  * @author piotrek
  */
 public class TestCipherModel {
-    
-    public TestCipherModel() {
-    }
-    
+
+    /**
+     * Test encrypting a single sentence and expecting the correct result.
+     */
     @ParameterizedTest
-    @ValueSource( strings = {"Alamakota"})
+    @ValueSource(strings = {"Alamakota"})
     void testEncryptSentencesCorrect(String originalSentence) throws InvalidCharacterException {
         CipherModel cipherModel = new CipherModel(originalSentence);
 
         String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
         assertEquals("Zoznzplgz", encryptedSentence);
     }
-    
+
+    /**
+     * Test encrypting a single sentence and expecting a failure (incorrect result).
+     */
     @ParameterizedTest
-    @ValueSource( strings = {"Alamakota"})
+    @ValueSource(strings = {"Alamakota"})
     void testEncryptSentencesFailed(String originalSentence) throws InvalidCharacterException {
         CipherModel cipherModel = new CipherModel(originalSentence);
 
         String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
         assertNotEquals("Wrong", encryptedSentence);
     }
-    
+
+    /**
+     * Test encrypting a sentence containing invalid characters and expecting an exception.
+     */
     @ParameterizedTest
-    @ValueSource( strings = {"Ala ma kota"})
+    @ValueSource(strings = {"Ala ma kota"})
     void testEncryptSentencesThrows(String originalSentence) throws InvalidCharacterException {
         CipherModel cipherModel = new CipherModel(originalSentence);
 
@@ -52,89 +59,71 @@ public class TestCipherModel {
             cipherModel.encrypt(cipherModel.getOriginalSentence());
         });
     }
-    
+
+    /**
+     * Test encrypting a list of sentences and expecting correct results for each.
+     */
     @ParameterizedTest
-    @CsvSource( {"Alamakota, Zoznzplgz","qwerty, jdvigb","nic, mrx"})
+    @CsvSource({"Alamakota, Zoznzplgz", "qwerty, jdvigb", "nic, mrx"})
     void testEncryptListSentencesCorrect(String originalSentence) throws InvalidCharacterException {
-//        CipherModel cipherModel = new CipherModel(originalSentence);
-//
-//        List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-//        assertEquals("Zoznzplgz", encryptedSentence);
+        // Uncomment when the method is implemented
+        // CipherModel cipherModel = new CipherModel(originalSentence);
+        // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
+        // assertEquals("Zoznzplgz", encryptedSentence);
     }
-    
+
+    /**
+     * Test encrypting a list of sentences and expecting a failure (incorrect result) for each.
+     */
     @ParameterizedTest
-    @CsvSource( {"Alamakota, Wrong","qwerty, Wrong","nic, Wrong"})
+    @CsvSource({"Alamakota, Wrong", "qwerty, Wrong", "nic, Wrong"})
     void testEncryptListSentencesFailed(String originalSentence) throws InvalidCharacterException {
-//        CipherModel cipherModel = new CipherModel(originalSentence);
-//
-//        List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-//        assertNotEquals("Wrong", encryptedSentence);
+        // Uncomment when the method is implemented
+        // CipherModel cipherModel = new CipherModel(originalSentence);
+        // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
+        // assertNotEquals("Wrong", encryptedSentence);
     }
-    
+
+    /**
+     * Test encrypting a list of sentences containing invalid characters and expecting an exception for each.
+     */
     @ParameterizedTest
-    @ValueSource( strings = {"Ala ma kota", "qwe rty", "n i c"})
+    @ValueSource(strings = {"Ala ma kota", "qwe rty", "n i c"})
     void testEncryptListSentencesThrows(String originalSentence) throws InvalidCharacterException {
-//        CipherModel cipherModel = new CipherModel(originalSentence);
-//
-//        assertThrows(InvalidCharacterException.class, () -> {
-//            cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-//        });
+        // Uncomment when the method is implemented
+        // CipherModel cipherModel = new CipherModel(originalSentence);
+        // assertThrows(InvalidCharacterException.class, () -> {
+        //    cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
+        // });
     }
-            
+
+    /**
+     * Test encrypting a single character and expecting the correct result.
+     */
     @Test
-    void testEncryptCharCorrect(){
+    void testEncryptCharCorrect() {
         char originalChar = 'a';
         char encryptedChar = CipherModel.encryptChar(originalChar);
         assertEquals('z', encryptedChar);
     }
+
+    /**
+     * Test encrypting a single character and expecting a failure (incorrect result).
+     */
     @Test
-    void testEncryptCharFailed(){
+    void testEncryptCharFailed() {
         char originalChar = 'a';
         char encryptedChar = CipherModel.encryptChar(originalChar);
         assertNotEquals('a', encryptedChar);
     }
+
+    /**
+     * Test encrypting a non-alphabetic character and expecting it to remain unchanged.
+     */
     @Test
-    void testEncryptCharNotLetter(){
+    void testEncryptCharNotLetter() {
         char originalChar = 1;
         char encryptedChar = CipherModel.encryptChar(originalChar);
         assertEquals(1, encryptedChar);
     }
-
-//    @org.junit.jupiter.api.BeforeAll
-//    public static void setUpClass() throws Exception {
-//    }
-//
-//    @org.junit.jupiter.api.AfterAll
-//    public static void tearDownClass() throws Exception {
-//    }
-//
-//    @org.junit.jupiter.api.BeforeEach
-//    public void setUp() throws Exception {
-//    }
-//
-//    @org.junit.jupiter.api.AfterEach
-//    public void tearDown() throws Exception {
-//    }
-//    
-//    @BeforeAll
-//    public static void setUpClass() {
-//    }
-//    
-//    @AfterAll
-//    public static void tearDownClass() {
-//    }
-//    
-//    @BeforeEach
-//    public void setUp() {
-//    }
-//    
-//    @AfterEach
-//    public void tearDown() {
-//    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

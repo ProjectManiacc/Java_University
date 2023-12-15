@@ -6,6 +6,7 @@ import java.util.List;
  * The view class responsible for displaying information to the user.
  *
  * @author Piotr Kluziok
+ * @version 1.0.0
  */
 public class CipherView {
 

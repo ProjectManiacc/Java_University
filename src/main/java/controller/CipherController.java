@@ -9,6 +9,7 @@ import java.util.Scanner;
  * class provides methods for reading a user's sentence and encrypting it.
  *
  * @author Piotr Kluziok
+ * @version 1.0.0
  */
 public class CipherController {
 

@@ -1,10 +1,11 @@
-package controller;
+package model;
 
 /**
  * Custom exception class to represent an error when an invalid character is
  * encountered.
  *
  * @author Piotr Kluziok
+ * @version 1.0,0
  */
 public class InvalidCharacterException extends Exception {
 

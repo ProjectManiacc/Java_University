@@ -1,6 +1,5 @@
 package model;
 
-import controller.InvalidCharacterException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +7,7 @@ import java.util.List;
  * The model class representing the original sentence to be encrypted.
  *
  * @author Piotr Kluziok
+ * @version 1.0.0
  */
 public class CipherModel {
 
@@ -48,7 +48,7 @@ public class CipherModel {
      * @throws InvalidCharacterException If an invalid character is encountered
      * during encryption.
      */
-    public static String encrypt(String sentence) throws InvalidCharacterException {
+    public String encrypt(String sentence) throws InvalidCharacterException {
         StringBuilder encrypted = new StringBuilder();
         for (int i = 0; i < sentence.length(); i++) {
             char currentChar = sentence.charAt(i);
@@ -77,7 +77,7 @@ public class CipherModel {
      * @param letter The character to encrypt.
      * @return The encrypted character.
      */
-    public static char encryptChar(char letter) {
+    public char encryptChar(char letter) {
         if (Character.isLowerCase(letter)) {
             return (char) ('z' - (letter - 'a'));
         } else if (Character.isUpperCase(letter)) {

@@ -3,7 +3,7 @@
 package pl.polsl.cipher;
 
 import controller.CipherController;
-import controller.InvalidCharacterException;
+import model.InvalidCharacterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +16,7 @@ import view.CipherView;
  * sentence is then displayed using the CipherView class.
  *
  * @author Piotr Kluziok
+ * @version 1.0.0
  */
 public class Cipher {
 
