@@ -77,7 +77,7 @@ public class CipherModel {
      * @param letter The character to encrypt.
      * @return The encrypted character.
      */
-    public char encryptChar(char letter) {
+    private char encryptChar(char letter) {
         if (Character.isLowerCase(letter)) {
             return (char) ('z' - (letter - 'a'));
         } else if (Character.isUpperCase(letter)) {

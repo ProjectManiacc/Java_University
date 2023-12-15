@@ -97,33 +97,33 @@ public class TestCipherModel {
         // });
     }
 
-    /**
-     * Test encrypting a single character and expecting the correct result.
-     */
-    @Test
-    void testEncryptCharCorrect() {
-        char originalChar = 'a';
-        char encryptedChar = CipherModel.encryptChar(originalChar);
-        assertEquals('z', encryptedChar);
-    }
-
-    /**
-     * Test encrypting a single character and expecting a failure (incorrect result).
-     */
-    @Test
-    void testEncryptCharFailed() {
-        char originalChar = 'a';
-        char encryptedChar = CipherModel.encryptChar(originalChar);
-        assertNotEquals('a', encryptedChar);
-    }
-
-    /**
-     * Test encrypting a non-alphabetic character and expecting it to remain unchanged.
-     */
-    @Test
-    void testEncryptCharNotLetter() {
-        char originalChar = 1;
-        char encryptedChar = CipherModel.encryptChar(originalChar);
-        assertEquals(1, encryptedChar);
-    }
+//    /**
+//     * Test encrypting a single character and expecting the correct result.
+//     */
+//    @Test
+//    void testEncryptCharCorrect() {
+//        char originalChar = 'a';
+//        char encryptedChar = CipherModel.encryptChar(originalChar);
+//        assertEquals('z', encryptedChar);
+//    }
+//
+//    /**
+//     * Test encrypting a single character and expecting a failure (incorrect result).
+//     */
+//    @Test
+//    void testEncryptCharFailed() {
+//        char originalChar = 'a';
+//        char encryptedChar = CipherModel.encryptChar(originalChar);
+//        assertNotEquals('a', encryptedChar);
+//    }
+//
+//    /**
+//     * Test encrypting a non-alphabetic character and expecting it to remain unchanged.
+//     */
+//    @Test
+//    void testEncryptCharNotLetter() {
+//        char originalChar = 1;
+//        char encryptedChar = CipherModel.encryptChar(originalChar);
+//        assertEquals(1, encryptedChar);
+//    }
 }

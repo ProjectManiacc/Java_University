@@ -5,7 +5,7 @@ package model;
  * encountered.
  *
  * @author Piotr Kluziok
- * @version 1.0,0
+ * @version 1.1.0
  */
 public class InvalidCharacterException extends Exception {
 

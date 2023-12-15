@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestCipherModel" time="0.121" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestCipherModel" time="0.116" tests="12" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\piotrek\AppData\Local\Temp\surefire245905811155541915\surefirebooter-20231215135137096_3.jar C:\Users\piotrek\AppData\Local\Temp\surefire245905811155541915 2023-12-15T13-51-36_952-jvmRun1 surefire-20231215135137096_1tmp surefire_0-20231215135137096_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\piotrek\AppData\Local\Temp\surefire14841326135867682291\surefirebooter-20231215140213170_3.jar C:\Users\piotrek\AppData\Local\Temp\surefire14841326135867682291 2023-12-15T14-02-13_039-jvmRun1 surefire-20231215140213170_1tmp surefire_0-20231215140213170_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="TestCipherModel"/>
     <property name="surefire.test.class.path" value="C:\Users\piotrek\Desktop\Java_University\target\test-classes;C:\Users\piotrek\Desktop\Java_University\target\classes;C:\Users\piotrek\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.6.0\junit-jupiter-api-5.6.0.jar;C:\Users\piotrek\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\piotrek\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\piotrek\.m2\repository\org\junit\platform\junit-platform-commons\1.6.0\junit-platform-commons-1.6.0.jar;C:\Users\piotrek\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.6.0\junit-jupiter-params-5.6.0.jar;C:\Users\piotrek\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.6.0\junit-jupiter-engine-5.6.0.jar;C:\Users\piotrek\.m2\repository\org\junit\platform\junit-platform-engine\1.6.0\junit-platform-engine-1.6.0.jar;"/>
@@ -31,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\piotrek\AppData\Local\Temp\surefire245905811155541915\surefirebooter-20231215135137096_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\piotrek\AppData\Local\Temp\surefire14841326135867682291\surefirebooter-20231215140213170_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.9+11-LTS-201"/>
@@ -58,19 +58,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testEncryptSentencesFailed(String)[1]" classname="TestCipherModel" time="0.036"/>
-  <testcase name="testEncryptListSentencesCorrect(String)[1]" classname="TestCipherModel" time="0"/>
+  <testcase name="testEncryptSentencesFailed(String)[1]" classname="TestCipherModel" time="0.031"/>
+  <testcase name="testEncryptListSentencesCorrect(String)[1]" classname="TestCipherModel" time="0.001"/>
   <testcase name="testEncryptListSentencesCorrect(String)[2]" classname="TestCipherModel" time="0.001"/>
   <testcase name="testEncryptListSentencesCorrect(String)[3]" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptSentencesThrows(String)[1]" classname="TestCipherModel" time="0.004"/>
-  <testcase name="testEncryptCharFailed" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptSentencesCorrect(String)[1]" classname="TestCipherModel" time="0.002"/>
-  <testcase name="testEncryptCharCorrect" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptCharNotLetter" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptListSentencesFailed(String)[1]" classname="TestCipherModel" time="0"/>
-  <testcase name="testEncryptListSentencesFailed(String)[2]" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptListSentencesFailed(String)[3]" classname="TestCipherModel" time="0.001"/>
-  <testcase name="testEncryptListSentencesThrows(String)[1]" classname="TestCipherModel" time="0"/>
-  <testcase name="testEncryptListSentencesThrows(String)[2]" classname="TestCipherModel" time="0.001"/>
+  <testcase name="testEncryptSentencesThrows(String)[1]" classname="TestCipherModel" time="0.005"/>
+  <testcase name="testEncryptSentencesCorrect(String)[1]" classname="TestCipherModel" time="0.001"/>
+  <testcase name="testEncryptListSentencesFailed(String)[1]" classname="TestCipherModel" time="0.001"/>
+  <testcase name="testEncryptListSentencesFailed(String)[2]" classname="TestCipherModel" time="0"/>
+  <testcase name="testEncryptListSentencesFailed(String)[3]" classname="TestCipherModel" time="0"/>
+  <testcase name="testEncryptListSentencesThrows(String)[1]" classname="TestCipherModel" time="0.001"/>
+  <testcase name="testEncryptListSentencesThrows(String)[2]" classname="TestCipherModel" time="0"/>
   <testcase name="testEncryptListSentencesThrows(String)[3]" classname="TestCipherModel" time="0"/>
 </testsuite>
