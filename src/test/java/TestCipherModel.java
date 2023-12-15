@@ -28,11 +28,14 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @ValueSource(strings = {"Alamakota"})
-    void testEncryptSentencesCorrect(String originalSentence) throws InvalidCharacterException {
+    void testEncryptSentencesCorrect(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
-
+        try {
         String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
         assertEquals("Zoznzplgz", encryptedSentence);
+        } catch(InvalidCharacterException e){
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
@@ -40,11 +43,14 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @ValueSource(strings = {"Alamakota"})
-    void testEncryptSentencesFailed(String originalSentence) throws InvalidCharacterException {
+    void testEncryptSentencesFailed(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
-
-        String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
-        assertNotEquals("Wrong", encryptedSentence);
+        try{
+            String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
+            assertNotEquals("Wrong", encryptedSentence);
+        } catch(InvalidCharacterException e){
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
@@ -52,7 +58,7 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @ValueSource(strings = {"Ala ma kota"})
-    void testEncryptSentencesThrows(String originalSentence) throws InvalidCharacterException {
+    void testEncryptSentencesThrows(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
 
         assertThrows(InvalidCharacterException.class, () -> {
@@ -65,11 +71,15 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @CsvSource({"Alamakota, Zoznzplgz", "qwerty, jdvigb", "nic, mrx"})
-    void testEncryptListSentencesCorrect(String originalSentence) throws InvalidCharacterException {
+    void testEncryptListSentencesCorrect(String originalSentence)  {
         // Uncomment when the method is implemented
         // CipherModel cipherModel = new CipherModel(originalSentence);
+        // try{
         // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
         // assertEquals("Zoznzplgz", encryptedSentence);
+        //} catch(InvalidCharacterException e) {
+        //    fail("Unexpected exception: " + e.getMessage());
+        //}
     }
 
     /**
@@ -77,11 +87,15 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @CsvSource({"Alamakota, Wrong", "qwerty, Wrong", "nic, Wrong"})
-    void testEncryptListSentencesFailed(String originalSentence) throws InvalidCharacterException {
+    void testEncryptListSentencesFailed(String originalSentence) {
         // Uncomment when the method is implemented
         // CipherModel cipherModel = new CipherModel(originalSentence);
+        // try{
         // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
         // assertNotEquals("Wrong", encryptedSentence);
+        //} catch(InvalidCharacterException e)
+        //fail("Unexpected exception: " + e.getMessage());
+        //}
     }
 
     /**
@@ -92,9 +106,13 @@ public class TestCipherModel {
     void testEncryptListSentencesThrows(String originalSentence) throws InvalidCharacterException {
         // Uncomment when the method is implemented
         // CipherModel cipherModel = new CipherModel(originalSentence);
+        // try{
         // assertThrows(InvalidCharacterException.class, () -> {
         //    cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
         // });
+        //} catch(InvalidCharacterException e){
+        // fail("Unexpected exception: " + e.getMessage());
+        //}
     }
 
 //    /**
