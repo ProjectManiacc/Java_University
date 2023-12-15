@@ -3,6 +3,7 @@ view\CipherView.class
 pl\polsl\cipher\package-info.class
 pl\polsl\cipher\Cipher.class
 view\package-info.class
+model\Annotation.class
 model\InvalidCharacterException.class
 controller\CipherController.class
 controller\package-info.class

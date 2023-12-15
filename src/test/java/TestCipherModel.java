@@ -5,21 +5,18 @@
 
 import model.InvalidCharacterException;
 import java.util.List;
+import java.util.stream.Stream;
 import model.CipherModel;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
  * JUnit 5 test class for the CipherModel class.
  * 
  * @author piotrek
+ * @version 1.2.0
  */
 public class TestCipherModel {
 
@@ -31,9 +28,9 @@ public class TestCipherModel {
     void testEncryptSentencesCorrect(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
         try {
-        String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
-        assertEquals("Zoznzplgz", encryptedSentence);
-        } catch(InvalidCharacterException e){
+            String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
+            assertEquals("Zoznzplgz", encryptedSentence, "Encryption of a single sentence is correct");
+        } catch (InvalidCharacterException e) {
             fail("Unexpected exception: " + e.getMessage());
         }
     }
@@ -45,10 +42,10 @@ public class TestCipherModel {
     @ValueSource(strings = {"Alamakota"})
     void testEncryptSentencesFailed(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
-        try{
+        try {
             String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
-            assertNotEquals("Wrong", encryptedSentence);
-        } catch(InvalidCharacterException e){
+            assertNotEquals("Wrong", encryptedSentence, "Encryption of a single sentence is incorrect");
+        } catch (InvalidCharacterException e) {
             fail("Unexpected exception: " + e.getMessage());
         }
     }
@@ -63,85 +60,79 @@ public class TestCipherModel {
 
         assertThrows(InvalidCharacterException.class, () -> {
             cipherModel.encrypt(cipherModel.getOriginalSentence());
-        });
+        }, "Encryption of a single sentence with invalid characters should throw an exception");
     }
 
     /**
      * Test encrypting a list of sentences and expecting correct results for each.
      */
     @ParameterizedTest
-    @CsvSource({"Alamakota, Zoznzplgz", "qwerty, jdvigb", "nic, mrx"})
-    void testEncryptListSentencesCorrect(String originalSentence)  {
-        // Uncomment when the method is implemented
-        // CipherModel cipherModel = new CipherModel(originalSentence);
-        // try{
-        // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-        // assertEquals("Zoznzplgz", encryptedSentence);
-        //} catch(InvalidCharacterException e) {
-        //    fail("Unexpected exception: " + e.getMessage());
-        //}
+    @MethodSource("provideListSentences")
+    void testEncryptListSentencesCorrect(List<String> originalSentences) {
+        List<String> expectedEncrypted = List.of("Zoznzplgz", "jdvigb", "mrx");
+        CipherModel cipherModel = new CipherModel(originalSentences);
+        try {
+            List<String> actualEncryptedSentences = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
+            assertEquals(expectedEncrypted, actualEncryptedSentences, "Encryption of a list of sentences is correct");
+        } catch (InvalidCharacterException e) {
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
      * Test encrypting a list of sentences and expecting a failure (incorrect result) for each.
      */
     @ParameterizedTest
-    @CsvSource({"Alamakota, Wrong", "qwerty, Wrong", "nic, Wrong"})
-    void testEncryptListSentencesFailed(String originalSentence) {
-        // Uncomment when the method is implemented
-        // CipherModel cipherModel = new CipherModel(originalSentence);
-        // try{
-        // List<String> encryptedSentence = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-        // assertNotEquals("Wrong", encryptedSentence);
-        //} catch(InvalidCharacterException e)
-        //fail("Unexpected exception: " + e.getMessage());
-        //}
+    @MethodSource("provideListSentences")
+    void testEncryptListSentencesFailed(List<String> originalSentences) {
+        List<String> expectedEncrypted = List.of("Wrong", "Wrong", "Wrong");
+        CipherModel cipherModel = new CipherModel(originalSentences);
+        try {
+            List<String> encryptedSentences = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
+            assertNotEquals("Wrong", encryptedSentences, "Encryption of a list of sentences is incorrect");
+        } catch (InvalidCharacterException e) {
+            fail("Unexpected exception: " + e.getMessage());
+        }
     }
 
     /**
-     * Test encrypting a list of sentences containing invalid characters and expecting an exception for each.
+     * Test whether the list is not null for a given set of sentences.
      */
     @ParameterizedTest
-    @ValueSource(strings = {"Ala ma kota", "qwe rty", "n i c"})
-    void testEncryptListSentencesThrows(String originalSentence) throws InvalidCharacterException {
-        // Uncomment when the method is implemented
-        // CipherModel cipherModel = new CipherModel(originalSentence);
-        // try{
-        // assertThrows(InvalidCharacterException.class, () -> {
-        //    cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
-        // });
-        //} catch(InvalidCharacterException e){
-        // fail("Unexpected exception: " + e.getMessage());
-        //}
+    @MethodSource("provideListSentencesNonEmpty")
+    void testListNotNull(List<String> originalSentences) {
+        CipherModel cipherModel = new CipherModel(originalSentences);
+
+        assertNotNull(cipherModel.getOriginalListSentences(), "The list should not be null");
     }
 
-//    /**
-//     * Test encrypting a single character and expecting the correct result.
-//     */
-//    @Test
-//    void testEncryptCharCorrect() {
-//        char originalChar = 'a';
-//        char encryptedChar = CipherModel.encryptChar(originalChar);
-//        assertEquals('z', encryptedChar);
-//    }
-//
-//    /**
-//     * Test encrypting a single character and expecting a failure (incorrect result).
-//     */
-//    @Test
-//    void testEncryptCharFailed() {
-//        char originalChar = 'a';
-//        char encryptedChar = CipherModel.encryptChar(originalChar);
-//        assertNotEquals('a', encryptedChar);
-//    }
-//
-//    /**
-//     * Test encrypting a non-alphabetic character and expecting it to remain unchanged.
-//     */
-//    @Test
-//    void testEncryptCharNotLetter() {
-//        char originalChar = 1;
-//        char encryptedChar = CipherModel.encryptChar(originalChar);
-//        assertEquals(1, encryptedChar);
-//    }
+    /**
+     * Test whether the list is not empty for a given set of sentences.
+     */
+    @ParameterizedTest
+    @MethodSource("provideListSentencesNonEmpty")
+    void testListNotEmpty(List<String> originalSentences) {
+        CipherModel cipherModel = new CipherModel(originalSentences);
+
+        assertFalse(cipherModel.getOriginalListSentences().isEmpty(), "The list should not be empty");
+    }
+
+    /**
+     * Provides a stream of non-empty lists of sentences for testing.
+     */
+    private static Stream<List<String>> provideListSentencesNonEmpty() {
+        return Stream.of(
+                List.of("Item1", "Item2", "Item3"),
+                List.of("Left", "Right"),
+                List.of("One", "Two", "Three", "Four")
+        );
+    }
+
+    /**
+     * Provides a stream of lists of sentences for testing.
+     */
+    private static Stream<List<String>> provideListSentences() {
+        return Stream.of(List.of("Alamakota", "qwerty", "nic"));
+    }
+
 }

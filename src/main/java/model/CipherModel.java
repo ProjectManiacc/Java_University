@@ -2,16 +2,21 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.Annotation;
+
+
 
 /**
  * The model class representing the original sentence to be encrypted.
  *
  * @author Piotr Kluziok
- * @version 1.0.0
+ * @version 1.2.0
  */
 public class CipherModel {
-
+    @Annotation( value = "Original Sentence")
     private String originalSentence = null;
+    
+    @Annotation( value = "List of Original Sentences")
     private List<String> originalListSentences = null;
     /**
      * Constructs a CipherModel with the original sentence.
@@ -64,9 +69,18 @@ public class CipherModel {
     
     public List<String> encryptSentences(List<String> sentences) throws InvalidCharacterException {
         List<String> encryptedSentences = new ArrayList<>();
-        for (String sentence : sentences) {
-            encryptedSentences.add(encrypt(sentence));
-        }
+        sentences.forEach( sentence -> {
+            try {
+                encryptedSentences.add(encrypt(sentence));
+            }catch (InvalidCharacterException e){
+                System.err.println("Error encrypting sentence: " + e.getMessage());
+            }
+        });
+                
+        
+//        for (String sentence : sentences) {
+//            encryptedSentences.add(encrypt(sentence));
+//        }
         return encryptedSentences;
     }
     
