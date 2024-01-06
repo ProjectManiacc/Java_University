@@ -2,7 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Annotation;
+import model.InvalidCharacterException;
 
 
 
@@ -55,6 +58,9 @@ public class CipherModel {
      */
     public String encrypt(String sentence) throws InvalidCharacterException {
         StringBuilder encrypted = new StringBuilder();
+        if (sentence == null || sentence.isEmpty()) {
+            throw new InvalidCharacterException("Invalid input: null or empty sentence");
+        }
 
         for (int i = 0; i < sentence.length(); i += 2) {
             char firstChar = sentence.charAt(i);
@@ -83,8 +89,8 @@ public class CipherModel {
         sentences.forEach( sentence -> {
             try {
                 encryptedSentences.add(encrypt(sentence));
-            }catch (InvalidCharacterException e){
-                System.err.println("Error encrypting sentence: " + e.getMessage());
+            } catch (InvalidCharacterException ex) {
+                Logger.getLogger(CipherModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
                 

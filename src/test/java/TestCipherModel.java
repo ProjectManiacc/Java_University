@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 import model.CipherModel;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
@@ -29,7 +31,7 @@ public class TestCipherModel {
         CipherModel cipherModel = new CipherModel(originalSentence);
         try {
             String encryptedSentence = cipherModel.encrypt(cipherModel.getOriginalSentence());
-            assertEquals("Zoznzplgz", encryptedSentence, "Encryption of a single sentence is correct");
+            assertEquals("lAmakatoa", encryptedSentence, "Encryption of a single sentence is correct");
         } catch (InvalidCharacterException e) {
             fail("Unexpected exception: " + e.getMessage());
         }
@@ -55,6 +57,8 @@ public class TestCipherModel {
      */
     @ParameterizedTest
     @ValueSource(strings = {"Ala ma kota"})
+    @NullSource
+    @EmptySource
     void testEncryptSentencesThrows(String originalSentence) {
         CipherModel cipherModel = new CipherModel(originalSentence);
 
@@ -69,7 +73,7 @@ public class TestCipherModel {
     @ParameterizedTest
     @MethodSource("provideListSentences")
     void testEncryptListSentencesCorrect(List<String> originalSentences) {
-        List<String> expectedEncrypted = List.of("Zoznzplgz", "jdvigb", "mrx");
+        List<String> expectedEncrypted = List.of("OMYTEL", "UCADIK", "inc");
         CipherModel cipherModel = new CipherModel(originalSentences);
         try {
             List<String> actualEncryptedSentences = cipherModel.encryptSentences(cipherModel.getOriginalListSentences());
@@ -132,7 +136,7 @@ public class TestCipherModel {
      * Provides a stream of lists of sentences for testing.
      */
     private static Stream<List<String>> provideListSentences() {
-        return Stream.of(List.of("Alamakota", "qwerty", "nic"));
+        return Stream.of(List.of("MOTYLE", "CUDAKI", "nic"));
     }
 
 }

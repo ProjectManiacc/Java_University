@@ -63,7 +63,7 @@ public class Cipher {
         CipherModel cipherModelSentences = new CipherModel(listSentences);
         
         try {
-        encryptedListSentences = cipherModel.encryptSentences(listSentences);
+            encryptedListSentences = cipherModel.encryptSentences(listSentences);
         } catch (InvalidCharacterException e) {
             cipherView.showError(e.getMessage());
         }

@@ -8,7 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 /**
  * The view class responsible for displaying information to the user.
@@ -22,7 +25,7 @@ public class CipherView extends JFrame {
     private JTextField inputSentence;
     private JLabel outputEncryptedSentence;
     private JButton encryptSentenceButton;
-    private JComboBox sentencesList;
+    private JList<String> sentencesList;
     
     
     public CipherView(String[] args){
@@ -30,7 +33,11 @@ public class CipherView extends JFrame {
         inputSentence = new JTextField(args[0]);
         outputEncryptedSentence = new JLabel("Encrypted:");
         encryptSentenceButton = new JButton("Encrypt");
-        sentencesList = new JComboBox<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC"});
+        
+        sentencesList = new JList<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC"});
+        sentencesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane listScrollPane = new JScrollPane(sentencesList);
+        //sentencesList = new JComboBox<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC"});
 
      
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
@@ -55,11 +62,11 @@ public class CipherView extends JFrame {
     public String getInputSentence(){
         
         
-        if (sentencesList.getSelectedItem() == "Select Sentence"){
+        if (sentencesList.getSelectedValue() == "Select Sentence"){
             return inputSentence.getText();
         }
-        if (sentencesList.getSelectedItem() != null) {
-            return sentencesList.getSelectedItem().toString();
+        if (sentencesList.getSelectedValue() != null) {
+            return sentencesList.getSelectedValue();
         }
         // Otherwise, return the text entered in the input field
         return inputSentence.getText();
