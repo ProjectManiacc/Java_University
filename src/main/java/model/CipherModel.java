@@ -55,6 +55,32 @@ public class CipherModel {
      */
     public String encrypt(String sentence) throws InvalidCharacterException {
         StringBuilder encrypted = new StringBuilder();
+
+        for (int i = 0; i < sentence.length(); i += 2) {
+            char firstChar = sentence.charAt(i);
+
+            if (i + 1 < sentence.length()) {
+                char secondChar = sentence.charAt(i + 1);
+
+                if (Character.isLetter(firstChar) && Character.isLetter(secondChar)) {
+                    encrypted.append(secondChar);
+                    encrypted.append(firstChar);
+                } else {
+                    throw new InvalidCharacterException("Invalid Characters: " + firstChar + ", " + secondChar);
+                }
+            } else {
+                encrypted.append(encryptChar(firstChar));
+            }
+        }
+
+        return encrypted.toString();
+    }
+
+    
+    
+    /*
+    public String encrypt(String sentence) throws InvalidCharacterException {
+        StringBuilder encrypted = new StringBuilder();
         for (int i = 0; i < sentence.length(); i++) {
             char currentChar = sentence.charAt(i);
             if (Character.isLetter(currentChar)) {
@@ -66,6 +92,7 @@ public class CipherModel {
         }
         return encrypted.toString();
     }
+    */
     
     public List<String> encryptSentences(List<String> sentences) throws InvalidCharacterException {
         List<String> encryptedSentences = new ArrayList<>();

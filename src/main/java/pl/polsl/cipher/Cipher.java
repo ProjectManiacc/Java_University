@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import model.CipherModel;
 import view.CipherView;
+import controller.EncryptButtonListener;
 
 /**
  * The main class for the Cipher application. This class handles the encryption
@@ -16,7 +17,7 @@ import view.CipherView;
  * sentence is then displayed using the CipherView class.
  *
  * @author Piotr Kluziok
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class Cipher {
 
@@ -42,17 +43,14 @@ public class Cipher {
         // Only the first argument entered from the console will be used and accpepted.
         // It Has to be sentence that needs to be encrypted.
         CipherController cipherController = new CipherController();
+        CipherView cipherView = new CipherView(args);
+        sentence = cipherView.getInputSentence();
 
-        if (args.length == 1) {
-            sentence = args[0];
-        } else {
-            sentence = cipherController.readUserSentence();
-        }
-
-        CipherView cipherView = new CipherView();
         cipherView.showUserSentence(sentence);
-
         CipherModel cipherModel = new CipherModel(sentence);
+
+        cipherView.addEncryptButtonListener(new EncryptButtonListener(cipherModel, cipherView));
+
         try {
             encryptedSentence = cipherModel.encrypt(sentence);
         } catch (InvalidCharacterException e) {

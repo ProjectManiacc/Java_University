@@ -1,15 +1,78 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  * The view class responsible for displaying information to the user.
  *
  * @author Piotr Kluziok
- * @version 1.0.0
+ * @version 1.1.0
  */
-public class CipherView {
+public class CipherView extends JFrame {
+    
+    private String[] cmdArgs;
+    private JTextField inputSentence;
+    private JLabel outputEncryptedSentence;
+    private JButton encryptSentenceButton;
+    private JComboBox sentencesList;
+    
+    
+    public CipherView(String[] args){
+        cmdArgs = args;
+        inputSentence = new JTextField(args[0]);
+        outputEncryptedSentence = new JLabel("Encrypted:");
+        encryptSentenceButton = new JButton("Encrypt");
+        sentencesList = new JComboBox<>(new String[]{"Select Sentence", "Alamakota", "qwerty", "nic"});
 
+     
+        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+
+        
+        this.add(inputSentence);
+        this.add(sentencesList);
+        this.add(outputEncryptedSentence);
+        this.add(encryptSentenceButton);
+        
+        inputSentence.setPreferredSize( new Dimension(300,50));
+        sentencesList.setPreferredSize( new Dimension(300,50));
+        outputEncryptedSentence.setPreferredSize( new Dimension(300,50));
+        encryptSentenceButton.setPreferredSize( new Dimension(300,50));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+    }
+    
+    public String getInputSentence(){
+        
+        
+        if (sentencesList.getSelectedItem() == "Select Sentence"){
+            return inputSentence.getText();
+        }
+        if (sentencesList.getSelectedItem() != null) {
+            return sentencesList.getSelectedItem().toString();
+        }
+        // Otherwise, return the text entered in the input field
+        return inputSentence.getText();
+    }
+    
+    public void setOutputEncryptedSentence(String encryptedSentence){
+        outputEncryptedSentence.setText(encryptedSentence);
+    }
+    
+    public void addEncryptButtonListener(ActionListener listener) {
+        encryptSentenceButton.addActionListener(listener);
+    }
+        
     /**
      * Displays the user's input sentence.
      *

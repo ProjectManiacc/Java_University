@@ -9,7 +9,7 @@ import java.util.Scanner;
  * class provides methods for reading a user's sentence and encrypting it.
  *
  * @author Piotr Kluziok
- * @version 1.0.0
+ * @version 1.1.0
  */
 public class CipherController {
 
@@ -18,12 +18,12 @@ public class CipherController {
      *
      * @return The sentence entered by the user.
      */
-    public String readUserSentence() {
-        System.out.println("Please type a sentence for encrypting\n");
-        Scanner scanner = new Scanner(System.in);
-        String sentence = scanner.nextLine();
-        return sentence;
-    }
+//    public String readUserSentence() {
+//        System.out.println("Please type a sentence for encrypting\n");
+//        Scanner scanner = new Scanner(System.in);
+//        String sentence = scanner.nextLine();
+//        return sentence;
+//    }
 
 
 }

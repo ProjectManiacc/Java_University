@@ -5,6 +5,7 @@ pl\polsl\cipher\Cipher.class
 view\package-info.class
 model\Annotation.class
 model\InvalidCharacterException.class
+controller\EncryptButtonListener.class
 controller\CipherController.class
 controller\package-info.class
 model\CipherModel.class
