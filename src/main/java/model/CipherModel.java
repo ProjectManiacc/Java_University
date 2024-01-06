@@ -81,7 +81,7 @@ public class CipherModel {
                     encrypted.append(secondChar);
                     encrypted.append(firstChar);
                 } else {
-                    throw new InvalidCharacterException("Invalid Characters: " + firstChar + ", " + secondChar);
+                    throw new InvalidCharacterException("Invalid Characters: " + secondChar);
                 }
             } else {
                 encrypted.append(firstChar);
@@ -104,7 +104,7 @@ public class CipherModel {
             try {
                 encryptedSentences.add(encrypt(sentence));
             } catch (InvalidCharacterException ex) {
-                Logger.getLogger(CipherModel.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(CipherModel.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         return encryptedSentences;

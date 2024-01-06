@@ -2,12 +2,14 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -46,7 +48,7 @@ public class CipherView extends JFrame {
         outputEncryptedSentence = new JLabel("Encrypted:");
         encryptSentenceButton = new JButton("Encrypt");
 
-        sentencesList = new JList<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC"});
+        sentencesList = new JList<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC", "Alamakota", "Ala ma kota", "ALAnieMaKota"});
         sentencesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane listScrollPane = new JScrollPane(sentencesList);
 
@@ -56,6 +58,12 @@ public class CipherView extends JFrame {
         this.add(listScrollPane);
         this.add(outputEncryptedSentence);
         this.add(encryptSentenceButton);
+        
+        inputSentence.setToolTipText("Enter a sentence for encryption");
+        sentencesList.setToolTipText("Select a sentence from the list or enter a custom sentence");
+        encryptSentenceButton.setToolTipText("Click to encrypt the selected or entered sentence (Alt + E)");
+        
+        encryptSentenceButton.setMnemonic(KeyEvent.VK_E);
 
         inputSentence.setPreferredSize(new Dimension(200, 50));
         listScrollPane.setPreferredSize(new Dimension(200, 100));
@@ -142,7 +150,6 @@ public class CipherView extends JFrame {
      * @param message The error message to be displayed.
      */
     public void showError(String message) {
-        System.out.println("Error: " + message);
-        System.out.println("Application accepts only letters for encryption.");
+        JOptionPane.showMessageDialog(this, "Error: " + message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

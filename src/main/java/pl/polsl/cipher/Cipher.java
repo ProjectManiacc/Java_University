@@ -46,7 +46,7 @@ public class Cipher {
         CipherView cipherView = new CipherView(args);
         sentence = cipherView.getInputSentence();
 
-        cipherView.showUserSentence(sentence);
+        //cipherView.showUserSentence(sentence);
         CipherModel cipherModel = new CipherModel(sentence);
 
         cipherView.addEncryptButtonListener(new EncryptButtonListener(cipherModel, cipherView));
@@ -56,10 +56,10 @@ public class Cipher {
         } catch (InvalidCharacterException e) {
             cipherView.showError(e.getMessage());
         }
-        cipherView.showEncryptedSentence(encryptedSentence);
+        //cipherView.showEncryptedSentence(encryptedSentence);
         
         List<String> listSentences = new ArrayList<String>(Arrays.asList("MOTYLE", "CUDAKI", "NIC"));
-        cipherView.showUserListSentences(listSentences);
+        //cipherView.showUserListSentences(listSentences);
         CipherModel cipherModelSentences = new CipherModel(listSentences);
         
         try {
@@ -67,6 +67,6 @@ public class Cipher {
         } catch (InvalidCharacterException e) {
             cipherView.showError(e.getMessage());
         }
-        cipherView.showEncryptedListSentence(encryptedListSentences);
+        //cipherView.showEncryptedListSentence(encryptedListSentences);
     }
 }

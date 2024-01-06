@@ -43,7 +43,7 @@ public class EncryptButtonListener implements ActionListener {
         try {
             encryptedText = model.encrypt(inputText);
         } catch (InvalidCharacterException e) {
-            System.out.println("Error: " + e.getMessage());
+            view.showError(e.getMessage());
         }
 
         view.setOutputEncryptedSentence("Encrypted: " + encryptedText);
