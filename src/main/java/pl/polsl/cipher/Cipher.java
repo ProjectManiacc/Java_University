@@ -58,7 +58,7 @@ public class Cipher {
         }
         cipherView.showEncryptedSentence(encryptedSentence);
         
-        List<String> listSentences = new ArrayList<String>(Arrays.asList("Alamakota", "qwerty", "nic"));
+        List<String> listSentences = new ArrayList<String>(Arrays.asList("MOTYLE", "CUDAKI", "NIC"));
         cipherView.showUserListSentences(listSentences);
         CipherModel cipherModelSentences = new CipherModel(listSentences);
         

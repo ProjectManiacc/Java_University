@@ -69,30 +69,14 @@ public class CipherModel {
                     throw new InvalidCharacterException("Invalid Characters: " + firstChar + ", " + secondChar);
                 }
             } else {
-                encrypted.append(encryptChar(firstChar));
+                encrypted.append(firstChar);
             }
         }
 
         return encrypted.toString();
     }
 
-    
-    
-    /*
-    public String encrypt(String sentence) throws InvalidCharacterException {
-        StringBuilder encrypted = new StringBuilder();
-        for (int i = 0; i < sentence.length(); i++) {
-            char currentChar = sentence.charAt(i);
-            if (Character.isLetter(currentChar)) {
-                char encryptedChar = encryptChar(currentChar);
-                encrypted.append(encryptedChar);
-            } else {
-                throw new InvalidCharacterException("Invalid Character: " + currentChar);
-            }
-        }
-        return encrypted.toString();
-    }
-    */
+   
     
     public List<String> encryptSentences(List<String> sentences) throws InvalidCharacterException {
         List<String> encryptedSentences = new ArrayList<>();
@@ -118,13 +102,5 @@ public class CipherModel {
      * @param letter The character to encrypt.
      * @return The encrypted character.
      */
-    private char encryptChar(char letter) {
-        if (Character.isLowerCase(letter)) {
-            return (char) ('z' - (letter - 'a'));
-        } else if (Character.isUpperCase(letter)) {
-            return (char) ('Z' - (letter - 'A'));
-        } else {
-            return letter;
-        }
-    }
+    
 }

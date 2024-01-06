@@ -30,7 +30,7 @@ public class CipherView extends JFrame {
         inputSentence = new JTextField(args[0]);
         outputEncryptedSentence = new JLabel("Encrypted:");
         encryptSentenceButton = new JButton("Encrypt");
-        sentencesList = new JComboBox<>(new String[]{"Select Sentence", "Alamakota", "qwerty", "nic"});
+        sentencesList = new JComboBox<>(new String[]{"Select Sentence", "MOTYLE", "CUDAKI", "NIC"});
 
      
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
