@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import model.CipherModel;
 import view.CipherView;
-import controller.EncryptButtonListener;
+import model.EncryptButtonListener;
 
 /**
  * The main class for the Cipher application. This class handles the encryption
